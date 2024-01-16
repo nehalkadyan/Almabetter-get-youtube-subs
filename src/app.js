@@ -1,9 +1,50 @@
 const express = require('express');
 const app = express();
 const subscriberModel = require("./models/subscribers")
+const path = require('path'); 
 
-// Your code goes here
+
+const staticPath = path.join(__dirname, "../public")
+
+app.use(express.static(staticPath));
 app.use(express.json());
+
+ /**
+   * @swagger
+   * /subscribers:
+   *  get:
+   *      summary: Get all subscribers
+   *      description : Retreive an array of all subscribers
+   *      responses : 
+   *          200:
+   *              description : Successful Response
+   * @swagger
+   * /subscribers/names:
+   *  get:
+   *      summary: Get all subscribers' names and subscribed channels only
+   *      description : Retrieve an array of subscribers with their names and subscribed channels only.
+   *      responses : 
+   *          200:
+   *              description : Successful Response
+   * @swagger
+   * /subscribers/{id}:
+   *  get:
+   *      summary: Get a subscriber by ID
+   *      description : Retrieve a subscriber by their unique ID
+   *      parameters:
+   *        - in: path
+   *          name: id
+   *          required: true
+   *          description: Subscriber ID
+   *          schema:
+   *            type: string
+   *      responses : 
+   *          200:
+   *              description : Successful Response
+   *          400:
+   *              description : Subscriber not found
+   */
+
 
 //endpoint for getting an array of all subscribers
 app.get("/subscribers", async (req, res) => {
@@ -44,6 +85,7 @@ app.get("/subscribers/:id", async(req, res) => {
         res.status(400).json({message : err.message})
     }
 })
+
 
 
 

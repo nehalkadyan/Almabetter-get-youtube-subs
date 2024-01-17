@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// creating the subscriberSchema for storing in database
 const susbcriberSchema = new mongoose.Schema({
     name: {
         type: String,

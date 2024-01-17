@@ -1,14 +1,16 @@
 const express = require('express');
 const app = express();
 const subscriberModel = require("./models/subscribers")
+// importing the path
 const path = require('path'); 
 
-
+// initializing static path for the index.html file
 const staticPath = path.join(__dirname, "../public")
-
+// middleware to first load the html before going at the api routes
 app.use(express.static(staticPath));
+// middleware to parse the JSON data into javascript object
 app.use(express.json());
-
+// using the swagger library for node documentation
  /**
    * @swagger
    * /subscribers:
@@ -88,5 +90,5 @@ app.get("/subscribers/:id", async(req, res) => {
 
 
 
-
+// exporting the app
 module.exports = app;

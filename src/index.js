@@ -24,7 +24,7 @@ const options = {
       },
       servers : [
         {
-          url : "http://localhost:3000/",
+          url : "https://get-youtube-subs-yzwd.onrender.com/",
         }
       ]
     },

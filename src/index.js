@@ -1,5 +1,6 @@
 const express = require('express')
-const app = require('./app.js')
+const app = require('./app.js');
+const cors = require("cors");
 const mongoose = require('mongoose')
 const port = 3000;
 const swaggerJSDoc = require("swagger-jsdoc");
@@ -8,6 +9,8 @@ const swaggerUI = require("swagger-ui-express");
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+// Use CORS middleware
+app.use(cors());
 
 
 
